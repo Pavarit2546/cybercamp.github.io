@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* คล้ายๆ กับ CSS เดิม */
+        body {
+            background-color: #0e0e0e;
+            color: #00ff99;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 400px;
+            padding: 20px;
+            border: 2px solid #00ff99;
+            border-radius: 8px;
+        }
+
+        .submit-button {
+            background-color: #00ff99;
+            color: #0e0e0e;
+            padding: 10px 20px;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .submit-button:hover {
+            background-color: #0affd4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <p>ใส่รหัสผ่านเพื่อเข้าสู่ระบบ</p>
+        
+        <!-- ช่องสำหรับกรอกรหัสผ่าน -->
+        <input type="password" id="passwordInput" placeholder="Password" />
+        <button class="submit-button" onclick="checkPassword()">Login</button>
+        
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value;
+            const message = document.getElementById('message');
+
+            
+            if (input === 'secretCode!') { 
+                message.style.color = '#00ff99';
+                message.textContent = 'รหัสผ่านถูกต้อง! ยินดีต้อนรับเข้าสู่ระบบ';
+                
+                
+                setTimeout(() => {
+                    window.location.href = 'home.html';
+                }, 1000);
+            } else {
+                message.style.color = 'red';
+                message.textContent = 'รหัสผ่านไม่ถูกต้อง ลองอีกครั้ง';
+                
+            }
+        }
+    </script>
+</body>
+</html>

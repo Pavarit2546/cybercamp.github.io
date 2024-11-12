@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ภารกิจที่ 3: ฝังฉันสิ</title>
+    <style>
+        /* ตั้งค่าเบื้องต้นสำหรับทั้งหน้า */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgb(85, 255, 0);
+            max-width: 800px;
+            width: 100%;
+            border-width: 20px;
+            border-color: #00ff66;
+        }
+        h1 {
+            color: #148441;
+            margin-bottom: 10px;
+        }
+        .download-button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #00796b;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 15px 0;
+            transition: background-color 0.3s ease;
+        }
+        .download-button:hover {
+            background-color: #004d40;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #00796b;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #b2dfdb;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus {
+            border-color: #00796b;
+        }
+        button[type="submit"] {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #00796b;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #004d40;
+        }
+        #errorMessage {
+            color: #d32f2f;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ภารกิจที่ 3: ฉันถูกฝังอยู่ในนี้ ช่วยฉันด้วย</h1>
+        <h1>ดาวน์โหลดรูปภาพที่นี่</h1>
+        <a href="Mission3.jpg" download="Mission3.jpg" class="download-button">ดาวน์โหลดรูปภาพ</a>
+
+        <form id="keyForm">
+            <label for="keyInput">กรุณากรอก Key:</label>
+            <input type="text" id="keyInput" required>
+            <button type="submit">ยืนยัน</button>
+        </form>
+
+        <p id="errorMessage" style="display: none;">Key ที่กรอกไม่ถูกต้อง โปรดลองใหม่อีกครั้ง</p>
+    </div>
+
+    <script>
+        document.getElementById('keyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const keyInput = document.getElementById('keyInput').value;
+            const correctKey = 'CYBERFORYOUTH{EMBEDDING_BY_STEGHIDE}';
+
+            if (keyInput === correctKey) {
+                window.location.href = 'home.html?SeePic=1';
+            } else {
+                document.getElementById('errorMessage').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

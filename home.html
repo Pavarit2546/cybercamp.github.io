@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <title>Home - ผู้ต้องสงสัย</title>
+    <style>
+        /* ตั้งค่าเบื้องต้นสำหรับ body */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0e0e0e;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* การจัดการสำหรับ header */
+        h1 {
+            text-align: center;
+            color: #00ff99;
+            margin-top: 50px;
+            font-size: 2.5rem;
+        }
+
+        h3 {
+            font-family: 'Courier New', Courier, monospace;
+            /* ใช้ฟอนต์แบบคอมพิวเตอร์และไซเบอร์ */
+            font-size: 22px;
+            /* ขนาดฟอนต์ */
+            line-height: 1.5;
+            /* ระยะห่างระหว่างบรรทัด */
+            color: #00ff99;
+            /* สีตัวอักษรเขียวมินต์เหมือนในธีมไซเบอร์ */
+            background-color: #000000;
+            /* พื้นหลังสีดำ */
+            padding: 20px;
+            /* เพิ่มช่องว่างรอบๆ */
+            border-radius: 10px;
+            /* มุมโค้ง */
+            box-shadow: 0 0 15px rgba(0, 255, 153, 0.5);
+            /* เงาเพิ่มความลึก */
+            text-align: justify;
+            /* จัดข้อความให้อยู่ตรงกลาง */
+            margin: 20px auto;
+            /* ตั้งค่าระยะห่างด้านบนและล่าง */
+            max-width: 80%;
+            /* จำกัดความกว้าง */
+        }
+
+        h3::before {
+            content: '🔍 ';
+            /* เพิ่มไอคอนรูปแว่นขยายก่อนข้อความ */
+        }
+
+        h3::after {
+            content: ' 🔒';
+            /* เพิ่มไอคอนรูปกุญแจหลังข้อความ */
+        }
+
+        /* จัดกล่องสำหรับแผนผังผู้ต้องสงสัย */
+        .suspect-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        /* กล่องของผู้ต้องสงสัย */
+        .suspect-box {
+            width: 220px;
+            height: 350px;
+            margin: 15px;
+            border: 2px solid #00ff99;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 255, 153, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .suspect-box:hover {
+            transform: scale(1.1);
+        }
+
+        /* แสดงรูปภาพของผู้ต้องสงสัย */
+        .suspect-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .suspect-box:hover .suspect-image {
+            opacity: 1;
+        }
+
+        /* การซ่อนไอเทมที่ยังไม่ได้เปิดเผย */
+        .hidden {
+            background-color: #000;
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ป้ายชื่อผู้ต้องสงสัย */
+        .suspect-label {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            text-shadow: 0 0 5px #00ff99;
+        }
+
+        /* ปุ่มทำภารกิจ */
+        .task-button {
+            padding: 12px 30px;
+            background-color: #00ff99;
+            color: #0e0e0e;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        .task-button:hover {
+            background-color: #00cc80;
+        }
+
+        .task-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        /* เพิ่มขอบกับแถวบน (บอสใหญ่) */
+        #suspect5 {
+            width: 300px;
+            height: 400px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Cyber Investigator</h1>
+        <h3>ยินดีด้วยที่คุณสามารถแกะเบาะแสมาถึงตรงนี้ได้
+            ภารกิจต่อไปนี้คือจะมอบหมายได้คุณช่วยตามหาบุคคลต้องสงสัยที่เหลือให้ฉันหน่อย ฉันจะไม่บอกหรอกนะว่าฉันชื่ออะไร
+            แต่ฉันกำลังทำงานให้กับรัฐบาลในการสืบเรื่องนี้อยู่ เอาเป็นว่าไม่มีเวลาแล้ว คุณจะต้องรีบทำภารกิจในเร็วที่สุด
+            จะมอบภารกิจให้คุณแล้ว จงทำภารกิจให้สำเร็จซะ ขอให้โชคดี</h3>
+
+        <!-- แผนผังผู้ต้องสงสัย -->
+        <div class="suspect-grid">
+            <!-- บอสใหญ่ -->
+            <div class="suspect-box" id="suspect5">
+                <img class="suspect-image" id="image5" src="NONAME.jpg" alt="บอสใหญ่">
+                <div class="suspect-label">บอสใหญ่</div>
+            </div>
+        </div>
+
+        <div class="suspect-grid">
+            <!-- ผู้ต้องสงสัย 1-5 (โดยที่แต่ละคนจะถูกซ่อนไว้) -->
+            <div class="suspect-box" id="suspect0">
+                <img class="suspect-image" id="image0" src="DP1.jpg" alt="ผู้ต้องสงสัย 1">
+                <div class="suspect-label">ผู้ต้องสงสัย 1</div>
+            </div>
+            <div class="suspect-box hidden" id="suspect1">
+                <img class="suspect-image" id="image1" src="DP2.jpg" alt="ผู้ต้องสงสัย 2">
+                <div class="suspect-label">ผู้ต้องสงสัย 2</div>
+            </div>
+            <div class="suspect-box hidden" id="suspect2">
+                <img class="suspect-image" id="image2" src="NONAME.jpg" alt="ผู้ต้องสงสัย 3">
+                <div class="suspect-label">ผู้ต้องสงสัย 3</div>
+            </div>
+            <div class="suspect-box hidden" id="suspect3">
+                <img class="suspect-image" id="image3" src="NONAME.jpg" alt="ผู้ต้องสงสัย 4">
+                <div class="suspect-label">ผู้ต้องสงสัย 4</div>
+            </div>
+            <div class="suspect-box hidden" id="suspect4">
+                <img class="suspect-image" id="image4" src="NONAME.jpg" alt="ผู้ต้องสงสัย 5">
+                <div class="suspect-label">ผู้ต้องสงสัย 5</div>
+            </div>
+        </div>
+
+        <!-- ปุ่มสำหรับทำภารกิจ -->
+        <div id="task1">
+            <button type="button" class="task-button" onclick="completeTask(1)">ทำภารกิจที่ 1</button>
+        </div>
+        <div id="task2" class="hidden">
+            <button type="button" class="task-button" onclick="completeTask(2)">ทำภารกิจ 2</button>
+        </div>
+        <div id="task3" class="hidden">
+            <button type="button" class="task-button" onclick="completeTask(3)">ทำภารกิจ 3</button>
+        </div>
+        <div id="task4" class="hidden">
+            <button type="button" class="task-button" onclick="completeTask(4)">ทำภารกิจ 4</button>
+        </div>
+        <div id="task5" class="hidden">
+            <button type="button" class="task-button" onclick="completeTask(5)">ทำภารกิจ 5</button>
+        </div>
+
+        <script>
+            // ฟังก์ชันเริ่มต้น
+            window.onload = function () {
+                const urlParams = new URLSearchParams(window.location.search);
+                const seePic = urlParams.get('SeePic');  // รับค่าจาก URL เช่น home.html?SeePic=1
+            
+                if (seePic === '1') {
+                    // ถ้า SeePic = 1 แสดงภาพของผู้ต้องสงสัยที่ทำภารกิจเสร็จแล้ว
+                    for (let i = 1; i <= 5; i++) {
+                        if (sessionStorage.getItem(`taskCompleted${i}`) === "true") {
+                            const suspect = document.getElementById(`suspect${i}`);
+                            const image = document.getElementById(`image${i}`);
+                            if (suspect && image) {
+                                suspect.classList.remove('hidden');  // แสดงกล่องผู้ต้องสงสัย
+                                image.src = `DP${i+1}.jpg`;  // ตั้งค่าภาพเป็น DP สำหรับผู้ต้องสงสัยที่ทำภารกิจเสร็จแล้ว
+                            }
+                        }
+                    }
+                } else {
+                    // ถ้าไม่ใช่ 1 (ไม่มีพารามิเตอร์ SeePic หรือไม่เป็น 1) ให้ตั้งค่าเป็น NONAME
+                    for (let i = 1; i <= 5; i++) {
+                        const suspect = document.getElementById(`suspect${i}`);
+                        const image = document.getElementById(`image${i}`);
+                        if (suspect && image) {
+                            suspect.classList.add('hidden');  // ซ่อนกล่องผู้ต้องสงสัย
+                            image.src = 'NONAME.jpg';  // ตั้งค่าภาพเป็น NONAME
+                        }
+                    }
+                }
+            
+            };
+
+            // ฟังก์ชันสำหรับการทำภารกิจเสร็จ
+            function completeTask(taskNumber) {
+                // เมื่อผู้ใช้ทำภารกิจเสร็จ
+                sessionStorage.setItem(`taskCompleted${taskNumber}`, "true");
+
+                // ซ่อนปุ่มภารกิจที่ทำเสร็จแล้ว
+                document.getElementById(`task${taskNumber}`).classList.add('hidden');
+
+                // แสดงปุ่มภารกิจถัดไป
+                const nextTaskButton = document.getElementById(`task${taskNumber}`);
+                if (nextTaskButton) {
+                    nextTaskButton.classList.remove('hidden');
+                }
+
+
+                // ไปยังหน้าภารกิจถัดไปหลังจาก 3 วินาที
+                setTimeout(function () {
+                    window.location.href = `MIS${taskNumber}.html`;  // ไปที่หน้า MIS ถัดไป
+                });
+            }
+        </script>
+
+
+</body>
+
+</html>
